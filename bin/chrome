@@ -1,0 +1,5 @@
+#!/bin/sh
+
+/usr/bin/open -a "Google Chrome" \
+    --args --enable-experimental-extension-apis \
+    http://localhost/~wakita/projects/vpx/

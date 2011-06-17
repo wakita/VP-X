@@ -1,0 +1,8 @@
+open lib/ChromeX
+
+.PHONY: clean
+
+clean:
+    rm $(filter-proper-targets $(ls .R, .))
+
+.SUBDIRS: chrome.x

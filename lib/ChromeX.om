@@ -1,0 +1,3 @@
+%.json: %.js
+    println("Target = $@, Deps = $<")
+    d8 $< > $@
