@@ -1,1 +1,4 @@
 .DEFAULT: manifest.json
+
+manifest.json: vpx.js
+	d8 vpx.js -- --manifest > manifest.json
