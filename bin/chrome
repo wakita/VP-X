@@ -1,5 +1,6 @@
 #!/bin/sh
 
-/usr/bin/open -a "Google Chrome" \
-    --args --enable-experimental-extension-apis \
-    http://localhost/~wakita/projects/vpx/
+/usr/bin/open -a "Google Chrome" --args \
+  --user-data-dir="$user_data_dir/ChromeDevelopper" \
+  --enable-experimental-extension-apis \
+  http://localhost/~wakita/projects/vpx/
