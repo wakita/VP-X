@@ -1,3 +1,5 @@
+// Manifest definition
+
 (function (args) {
     var manifest = {
       name: 'VP/X extention',
@@ -5,18 +7,18 @@
       description: 'An extention for VP/X project',
       // default_locale: 'en',
 
-      permissions: [ 'experimental', 'tabs' ],
+      permissions: [ 'contextMenus', 'experimental', 'tabs' ],
+
+      background_page: 'vpx.html',
 
       content_scripts: [
       {
         matches: [ 'http://localhost/~wakita/projects/vpx/' + '*' ],
-        js: [ 'vpx.js' ]
+        js: [ 'inject.js' ]
       } ],
     };
 
-    if (typeof(alert) !== 'undefined')
-      alert('VP/X activated!');
-    else {
+    if (typeof(alert) === 'undefined') {
       for (i in args) {
         switch (args[i]) {
         case '--manifest':
@@ -26,3 +28,10 @@
       }
     }
   })(typeof(arguments) !== 'undefined' ? arguments : []);
+
+// Global script
+
+(function () {
+    if (typeof(window) === 'undefined') return;
+    console.log('VP/X launched');
+  })();
