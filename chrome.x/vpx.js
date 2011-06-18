@@ -2,7 +2,7 @@
 
 (function (args) {
     var manifest = {
-      name: 'VP/X extention',
+      name: 'VP/X',
       version: '1.0',
       description: 'An extention for VP/X project',
       // default_locale: 'en',
@@ -14,7 +14,7 @@
       content_scripts: [
       {
         matches: [ 'http://localhost/~wakita/projects/vpx/' + '*' ],
-        js: [ 'inject.js' ]
+        js: [ 'common.js', 'inject.js' ]
       } ],
     };
 
@@ -34,4 +34,16 @@
 (function () {
     if (typeof(window) === 'undefined') return;
     console.log('VP/X launched');
+
+    var X = chrome.extention;
+
+    chrome.contextMenus.create({
+        title: 'Hello to injected code.',
+        onclick: function (info, tab) {
+          console.log('Sending hello to the tab.');
+          chrome.tabs.sendRequest(tab.id, { greeting: 'Hello' },
+            function (v) { console.log(JSON.stringify(v)); });
+        }
+      });
+
   })();
